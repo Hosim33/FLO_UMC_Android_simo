@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.flo.databinding.FragmentHomeBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 
 class HomeFragment : Fragment() {
@@ -52,6 +53,14 @@ class HomeFragment : Fragment() {
                 albumRVAdapter.removeItem(position)
             }
         })
+
+        //PannelVPAdapter(this).fragmentlist
+
+        val pannelAdapter = PannelVPAdapter(this)
+        binding.homePannelVp.adapter = pannelAdapter
+
+
+        BannerVPAdapter(this).fragmentlist
 
         val bannerAdapter = BannerVPAdapter(this)
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_home_viewpager_exp))
