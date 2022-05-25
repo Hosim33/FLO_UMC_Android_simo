@@ -20,6 +20,7 @@
         tools:ignore="InvalidId" />
 
     <TextView
+        android:id="@+id/locker_login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로그인"
@@ -31,7 +32,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/locker_content_tb"
-        android:layout_width="190dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tabRippleColor="#00ff0000"
         app:tabIndicatorFullWidth="false"

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.flo.data.entities.Album
 import com.example.flo.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
@@ -15,6 +16,8 @@ class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
     private var albumDatas = ArrayList<Album>()
+
+    private lateinit var songDB : SongDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,15 +33,10 @@ class HomeFragment : Fragment() {
 //        }
 
         // 데이터베이스 리스트 생성 더미 데이터
-        albumDatas.apply {
-            add(Album("i","이아람",R.drawable.img_album_exp5))
-            add(Album("Lilac","아이유 (IU)",R.drawable.img_album_exp2))
-            add(Album("Feeling of You","윤새 (Yunsae)",R.drawable.img_album_exp3))
-            add(Album("Real Love","오마이걸 (OH MY GIRL)",R.drawable.img_album_exp4))
-            add(Album("나만 알면 돼","Apink (에이핑크)",R.drawable.img_album_exp6))
-            add(Album("Butter","방탄소년단 (BTS)",R.drawable.img_album_exp))
-        }
+        songDB = SongDatabase.getInstance(requireContext())!!
+        albumDatas.addAll(songDB.albumDao().getAlbums())
 
+        // 더미 데이터랑 Adapter 연결
         val albumRVAdapter = AlbumRVAdapter(albumDatas)
         binding.homeTodayMusicAlbumRv.adapter = albumRVAdapter
         binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -46,7 +44,6 @@ class HomeFragment : Fragment() {
         albumRVAdapter.setMyItemClickListener(object: AlbumRVAdapter.MyItemClickListener{
             override fun onItemClick(album: Album) {
                 changeAlbumFragment(album)
-
             }
 
             override fun onRemoveAlbum(position: Int) {

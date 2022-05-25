@@ -91,7 +91,7 @@
         android:layout_marginStart="80dp"/>
 
     <ImageView
-        android:id="@+id/song_albumexp2_iv"
+        android:id="@+id/song_album_iv"
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:src="@drawable/img_album_exp2"
@@ -116,18 +116,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/song_albumexp2_iv"
-        app:layout_constraintStart_toStartOf="@id/song_albumexp2_iv"
+        app:layout_constraintEnd_toEndOf="@+id/song_album_iv"
+        app:layout_constraintStart_toStartOf="@id/song_album_iv"
         app:layout_constraintTop_toBottomOf="@id/song_iu_tv">
 
         <ImageView
-            android:id="@+id/song_likeoff_iv"
+            android:id="@+id/song_like_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_my_like_off" />
 
         <ImageView
-            android:id="@+id/song_unlikeoff_iv"
+            android:id="@+id/song_unlike_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/btn_player_unlike_off"
